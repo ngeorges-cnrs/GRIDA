@@ -55,7 +55,7 @@ public class PoolClean extends Thread {
     private volatile boolean stop;
     private PoolDAO poolDAO;
 
-    public synchronized static PoolClean getInstance() {
+    public synchronized static PoolClean getInstance() throws DAOException {
     
         if (instance == null) {
             instance = new PoolClean();
@@ -64,7 +64,7 @@ public class PoolClean extends Thread {
         return instance;
     }
 
-    private PoolClean() {
+    private PoolClean() throws DAOException {
 
         stop = false;
         poolDAO = DAOFactory.getDAOFactory().getPoolDAO();
@@ -90,7 +90,7 @@ public class PoolClean extends Thread {
                 }
                 sleep(24*3600*1000);
 
-            } catch (DAOException ex) {
+            } catch (DAOException | BusinessException ex) {
                 // do nothing
             } catch (InterruptedException ex) {
                 logger.error(ex);

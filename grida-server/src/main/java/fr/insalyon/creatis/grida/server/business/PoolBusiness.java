@@ -59,9 +59,13 @@ public class PoolBusiness {
     private PoolDAO poolDAO;
     private DiskspaceManager diskManager;
 
-    public PoolBusiness() {
+    public PoolBusiness() throws BusinessException {
         diskManager = new DiskspaceManager();
-        poolDAO = DAOFactory.getDAOFactory().getPoolDAO();
+        try {
+            poolDAO = DAOFactory.getDAOFactory().getPoolDAO();
+        } catch (DAOException e) {
+            throw new BusinessException(e);
+        }
     }
 
     /**

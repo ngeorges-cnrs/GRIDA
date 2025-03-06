@@ -43,7 +43,8 @@ public abstract class DAOFactory {
     private static final int H2 = 1;
     private static int factory = H2;
 
-    public static DAOFactory getDAOFactory() {
+    public static DAOFactory getDAOFactory()
+            throws DAOException {
 
         switch (factory) {
             case H2:

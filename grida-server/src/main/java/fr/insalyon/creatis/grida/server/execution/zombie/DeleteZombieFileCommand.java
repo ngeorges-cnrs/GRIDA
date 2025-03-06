@@ -46,22 +46,19 @@ import fr.insalyon.creatis.grida.server.execution.Command;
 public class DeleteZombieFileCommand extends Command {
 
     private String surl;
-    private ZombieBusiness zombieBusiness;
 
     public DeleteZombieFileCommand(Communication communication,
             String proxyFileName, String surl) {
         
         super(communication, proxyFileName);
         this.surl = surl;
-        
-        zombieBusiness = new ZombieBusiness();
     }
 
     @Override
     public void execute() {
 
         try {
-            zombieBusiness.deleteZombieFile(surl);
+            new ZombieBusiness().deleteZombieFile(surl);
             communication.sendSuccessMessage();
 
         } catch (BusinessException ex) {

@@ -57,7 +57,7 @@ public class ListFilesAndFoldersCommand extends Command {
     private boolean refresh;
     private OperationBusiness operationBusiness;
     private CacheBusiness cacheBusiness;
-    
+
     public ListFilesAndFoldersCommand(Communication communication,
             String proxyFileName, String path, String refresh) {
 
@@ -66,13 +66,14 @@ public class ListFilesAndFoldersCommand extends Command {
         this.refresh = Boolean.valueOf(refresh);
         
         operationBusiness = new OperationBusiness(proxyFileName);
-        cacheBusiness = Configuration.getInstance().getFeatures().hasCache ? new CacheBusiness() : null;
     }
 
     @Override
     public void execute() {
 
         try {
+            cacheBusiness = Configuration.getInstance().getFeatures().hasCache ? new CacheBusiness() : null;
+
             if (refresh) {
                 getDataList();
 

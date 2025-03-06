@@ -37,6 +37,7 @@ package fr.insalyon.creatis.grida.server.execution.pool;
 import fr.insalyon.creatis.grida.common.Communication;
 import fr.insalyon.creatis.grida.server.business.BusinessException;
 import fr.insalyon.creatis.grida.server.business.PoolBusiness;
+import fr.insalyon.creatis.grida.server.dao.DAOException;
 import fr.insalyon.creatis.grida.server.execution.Command;
 
 /**

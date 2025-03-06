@@ -50,9 +50,12 @@ public class ZombieBusiness {
     private static final Logger logger = Logger.getLogger(ZombieBusiness.class);
     private ZombieFilesDAO zombieFilesDAO;
 
-    public ZombieBusiness() {
-
-        zombieFilesDAO = DAOFactory.getDAOFactory().getZombieFilesDAO();
+    public ZombieBusiness() throws BusinessException {
+        try {
+            zombieFilesDAO = DAOFactory.getDAOFactory().getZombieFilesDAO();
+        } catch(DAOException e) {
+            throw new BusinessException(e);
+        }
     }
 
     /**

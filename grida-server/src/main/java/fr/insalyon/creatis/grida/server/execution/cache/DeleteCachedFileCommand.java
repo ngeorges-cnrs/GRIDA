@@ -46,22 +46,19 @@ import fr.insalyon.creatis.grida.server.business.CacheBusiness;
 public class DeleteCachedFileCommand extends Command {
 
     private String path;
-    private CacheBusiness cacheBusiness;
 
     public DeleteCachedFileCommand(Communication communication,
             String proxyFileName, String path) {
         
         super(communication, proxyFileName);
         this.path = path;
-        
-        cacheBusiness = new CacheBusiness();
     }
 
     @Override
     public void execute() {
 
         try {
-            cacheBusiness.deleteCachedFile(path);
+            new CacheBusiness().deleteCachedFile(path);
             communication.sendSuccessMessage();
 
         } catch (BusinessException ex) {

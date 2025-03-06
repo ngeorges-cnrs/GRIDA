@@ -40,6 +40,10 @@ package fr.insalyon.creatis.grida.server.dao;
  */
 public class DAOException extends Exception {
 
+    public DAOException(String string) {
+        super(string);
+    }
+
     public DAOException(Throwable throwable) {
         super(throwable);
     }

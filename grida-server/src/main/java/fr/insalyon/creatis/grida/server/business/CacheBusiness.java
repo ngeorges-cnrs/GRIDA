@@ -59,11 +59,15 @@ public class CacheBusiness {
     private CacheFileDAO cacheFileDAO;
     private CacheListDAO cacheListDAO;
 
-    public CacheBusiness() {
+    public CacheBusiness() throws BusinessException {
 
         configuration = Configuration.getInstance();
-        cacheFileDAO = DAOFactory.getDAOFactory().getCacheFileDAO();
-        cacheListDAO = DAOFactory.getDAOFactory().getCacheListDAO();
+        try {
+            cacheFileDAO = DAOFactory.getDAOFactory().getCacheFileDAO();
+            cacheListDAO = DAOFactory.getDAOFactory().getCacheListDAO();
+        } catch(DAOException e) {
+            throw new BusinessException(e);
+        }
     }
 
     /**

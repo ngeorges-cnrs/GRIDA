@@ -47,19 +47,17 @@ import fr.insalyon.creatis.grida.server.business.CacheBusiness;
  */
 public class AllCachedFilesCommand extends Command {
 
-    private CacheBusiness cacheBusiness;
-    
     public AllCachedFilesCommand(Communication communication, String proxyFileName) {
         
         super(communication, proxyFileName);
-        
-        cacheBusiness = new CacheBusiness();
+
     }
 
     @Override
     public void execute() {
-        
         try {
+            CacheBusiness cacheBusiness = new CacheBusiness();
+
             for (CachedFile cachedFile : cacheBusiness.getCachedFiles()) {
                 communication.sendMessage(
                         cachedFile.getPath()

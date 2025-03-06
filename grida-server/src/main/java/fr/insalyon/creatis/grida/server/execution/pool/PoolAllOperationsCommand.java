@@ -38,6 +38,8 @@ import fr.insalyon.creatis.grida.common.Communication;
 import fr.insalyon.creatis.grida.common.bean.Operation;
 import fr.insalyon.creatis.grida.server.business.BusinessException;
 import fr.insalyon.creatis.grida.server.business.PoolBusiness;
+import fr.insalyon.creatis.grida.server.dao.DAOException;
+import fr.insalyon.creatis.grida.server.dao.DAOFactory;
 import fr.insalyon.creatis.grida.server.execution.Command;
 
 /**

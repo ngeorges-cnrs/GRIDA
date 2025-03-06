@@ -57,8 +57,12 @@ public class H2DAOFactory extends DAOFactory {
     private final String DBURL = "jdbc:h2:db/vlet-agent.db";
     private Connection connection;
 
-    public static H2DAOFactory getInstance() {
-        if (Configuration.getInstance().getFeatures().hasPool && instance == null) {
+    public static H2DAOFactory getInstance()
+            throws DAOException {
+        if (instance == null) {
+            if (!Configuration.getInstance().getFeatures().hasPool) {
+                throw new DAOException("Can't create H2DAOFactory: pool is disabled");
+            }
             instance = new H2DAOFactory();
         }
         return instance;
